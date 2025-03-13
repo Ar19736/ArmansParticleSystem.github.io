@@ -1,4 +1,4 @@
-// Particle System using Arrays, push(), and splice() - P5.js
+
 // References: 
 // 1. P5.js Arrays - https://p5js.org/reference/#/p5.Array  
 // 2. Particle System Guide - https://natureofcode.com/book/chapter-4-particle-systems/
@@ -19,15 +19,15 @@ function draw() {
         particles[i].show(); // Render particle
 
         if (particles[i].isDead()) {
-            particles.splice(i, 1); // Remove particle if it has faded out
+            particles.splice(i, 1); // Remove particle after it has faded out
         }
     }
 }
 
 // Click to add particles with random colors
 function mousePressed() {
-    for (let i = 0; i < 5; i++) { // Adds multiple particles per click
-        particles.push(new Particle(mouseX, mouseY)); // push() adds new particles
+    for (let i = 0; i < 5; i++) { // multiple particles per click
+        particles.push(new Particle(mouseX, mouseY)); 
     }
 }
 
@@ -35,9 +35,9 @@ function mousePressed() {
 class Particle {
     constructor(x, y) {
         this.position = createVector(x, y);
-        this.velocity = createVector(random(-2, 2), random(-2, 2)); // Random movement
-        this.alpha = 255; // Transparency (fades over time)
-        this.color = color(random(255), random(255), random(255)); // Random color
+        this.velocity = createVector(random(-2, 2), random(-2, 2)); 
+        this.alpha = 255; // fades over time
+        this.color = color(random(255), random(255), random(255)); 
     }
 
     update() {
@@ -48,7 +48,7 @@ class Particle {
             this.velocity.x *= -1; // Reverse x direction
         }
         if (this.position.y <= 0 || this.position.y >= height) {
-            this.velocity.y *= -1; // Reverse y direction
+            this.velocity.y *= -1; 
         }
 
         this.alpha -= 2; // Fade effect
